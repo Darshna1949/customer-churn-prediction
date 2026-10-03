@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -22,6 +23,20 @@ def load_data(path=DATA_PATH):
 
 def drop_identifier_columns(df):
     return df.drop(columns=ID_COLUMNS)
+
+
+def add_engineered_features(df):
+    df = df.copy()
+    df["age_group"] = pd.cut(
+        df["age"], bins=[-np.inf, 30, 40, 50, 60, np.inf],
+        labels=["18-30", "31-40", "41-50", "51-60", "60+"],
+    ).astype(object)
+    df["has_zero_balance"] = (df["balance"] == 0).astype(int)
+    df["products_group"] = pd.cut(
+        df["products_number"], bins=[-np.inf, 1, 2, np.inf],
+        labels=["1 product", "2 products", "3-4 products"],
+    ).astype(object)
+    return df
 
 
 def get_feature_groups(X):
