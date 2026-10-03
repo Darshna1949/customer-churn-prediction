@@ -1,0 +1,7 @@
+Model,Accuracy,Precision,Recall,F1,ROC-AUC,Train ROC-AUC
+Dummy (always no churn),0.7965,0.0,0.0,0.0,0.5,0.5
+Logistic Regression,0.8585,0.7719,0.4324,0.5543,0.8493,0.8447
+Decision Tree,0.8535,0.6966,0.4963,0.5796,0.8223,0.8491
+Random Forest,0.861,0.7633,0.4595,0.5736,0.8503,1.0
+Gradient Boosting,0.87,0.786,0.4963,0.6084,0.8701,0.8902
+Decision Tree (unlimited depth),0.7835,0.4696,0.4939,0.4814,0.6757,1.0
